@@ -13,7 +13,7 @@ const Header = () => {
 
     return (
         <header>
-            <nav className="fixed top-0 flex items-center justify-between gap-6 px-6 backdrop-blur-xl h-20 w-full">
+            <nav className="fixed z-100 top-0 flex items-center justify-between gap-6 px-6 backdrop-blur-xl h-20 w-full">
                 {/* brand logo */}
                 <Link href="/">
                     <span className="bg-accent p-3">NovoDeal</span>
@@ -23,15 +23,15 @@ const Header = () => {
                 <div className="relative flex items-stretch justify-center w-90 h-auto overflow-hidden ">
                     {/* Make PlaceHolder changes by time */}
                     <input
-                        className="text-sm bg-surface w-90 flex-1 flex-shrink py-2 px-6 pr-4 rounded-full outline-none focus:outline-none focus:border focus:border-accent-hover rounded-r-none overflow-hidden transition-all duration-300"
+                        className="text-sm bg-surface/50 backdrop-blur-lg w-90 flex-1 flex-shrink py-2 px-6 pr-4 rounded-full outline-none focus:outline-none focus:border focus:border-accent-hover rounded-r-none overflow-hidden transition-all duration-300"
                         id="search-field"
                         type="text"
                         placeholder="find products.."
                         onChange={() => console.log("hi")}   
                     />
-                    <button className="flex items-center justify-center h-10 w-10 bg-novo-gray/50 rounded-l-none rounded-r-full cursor-pointer">
+                    <button className="flex items-center justify-center bg-surface/50 backdrop-blur-lg h-10 w-10 rounded-l-none rounded-r-full cursor-pointer transition-colors duration-300">
                         <Search 
-                            className=" "
+                            className="text-gray-400 active:text-accent-hover "
                             size={20}
                         />
                     </button>
