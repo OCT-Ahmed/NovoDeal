@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Linking variables names with Tailwind classes */
+
+  /* --- (Typography) --- */
+  --font-heading: var(--font-heading); /* Syncopate */
+  --font-sans: var(--font-sans);       /* Outfit */
+  --font-mono: var(--font-mono);       /* JetBrains Mono */
+
+  /* --- (colors) --- */
+   --color-main: var(--bg-base);
+   --color-surface: var(--bg-surface);
+   
+   --color-accent: var(--primary-accent);
+   --color-accent-hover: var(--primary-hover);
+   --color-special-blue: var(--primary-blue);
+   
+   --color-base: var(--text-base);
+   --color-primary: var(--text-primary);
+   --color-primary-novo: var(--primary-blue)
+   --color-muted: var(--text-muted);
+   --color-novo-green: var(--text-base-green);
+   --color-novo-gray: var(--text-novo-gray);
+   --color-novo-bg-gray: var(--text-novo-bg-gray);
+   --color-novo-dark-gray: var(--text-novo-dark-gray);
+   --color-novo-black: var(--text-novo-black);
+   
+   
+
+   --color-border-dim: var(--border-color);
+}
+
+:root {
+  --background: ;
+  --foreground: #171717;
+  --bg-base: #F4F8FC;
+  --bg-surface: #e9ebee;
+  
+  --primary-accent: #C1FF00;
+  --primary-hover: #A8E600;
+  --primary-blue: #06052b;
+  --text-base: #1A2233;
+  --text-primary: #1A2233;
+  --text-base-green: #05AF25;
+  --text-novo-black: #0c0c0c;
+  /* في الفاتح النص الرئيسي داكن */
+  --text-muted: #4B5563;
+  --text-novo-gray: #666D85;
+  --text-novo-bg-gray: #F7F8FA;
+  --text-novo-dark-gray: #404553;
+  
+  --border-color: #E5E7EB;
+}
+
+.dark {
+  --bg-base: #0A0F1E;
+  --bg-surface: #161B2C;
+  
+  --primary-accent: #C1FF00;
+  --primary-hover: #A8E600;
+  
+  --text-base: #E2E8F0;
+  --text-primary: #C1FF00; /* base primary text in dark mode*/
+  --text-muted: #94A3B8;
+  
+  --border-color: #2D3748;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  body {
+    font-size: 16px;
+    font-family: var(--font-sans);
+    background-color: var(--bg-base);
+    color: var(--text-base);
+    width: 100%;
+    min-height: 100vh;
+    
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizelegibility;
+    @apply antialiased transition-colors duration-300;
+  }
+
+  main {
+    width:100%;
+  }
+
+  h1, h2, h3, .brand-title {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  section {
+    min-height: 100vh;
+    padding-top:72px
+  } 
+
+  header, footer {
+    width: 100%;
+  }
+}
+
+/* كلاسات مخصصة (Custom Utility Classes) */
+@layer components {
+  .btn-pulse-nova {
+    @apply relative bg-accent text-black font-bold py-4 px-8 rounded-full transition-all hover:scale-105 active:scale-95;
+    animation: double-pulse 2s infinite;
+  }
+
+  .card-3d {
+    @apply absolute w-64 p-6 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl;
+    animation: float 6s ease-in-out infinite;
+    transform-style: preserve-3d;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotateY(-20deg) rotateX(10deg); }
+    50% { transform: translateY(-20px) rotateY(-15deg) rotateX(5deg); }
+  }
+  
+  /* أنيميشن النبض المزدوج */
+  @keyframes double-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(193, 255, 0, 0.7), 0 0 0 0 rgba(193, 255, 0, 0.3); }
+    70% { box-shadow: 0 0 0 15px rgba(193, 255, 0, 0), 0 0 0 30px rgba(193, 255, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(193, 255, 0, 0), 0 0 0 0 rgba(193, 255, 0, 0); }
+  }
+}
+
+
+/**
+  =========================== Key Frames
+*/
+@keyframes float {
+  0% {
+    transform: translateY(0px) scale(1);
+  }
+  100% {
+    transform: translateY(-35px) scale(1.15);
+    background-color: rgba(200, 224, 162, 0.253);
+  }
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translateY(0px) rotateY(-20deg) rotateX(10deg); }
+  50% { transform: translateY(-20px) rotateY(-15deg) rotateX(5deg); }
+}
+
+@keyframes double-pulse-once {
+  0% { box-shadow: 0 0 0 0 rgba(193, 255, 0, 0.7); }
+  25% { box-shadow: 0 0 0 15px rgba(193, 255, 0, 0); } /* النبضة الأولى */
+  50% { box-shadow: 0 0 0 0 rgba(193, 255, 0, 0.7); } /* عودة للصفر */
+  75% { box-shadow: 0 0 0 20px rgba(193, 255, 0, 0); } /* النبضة الثانية (أكبر قليلاً) */
+  100% { box-shadow: 0 0 0 0 rgba(193, 255, 0, 0); }
+}
+
+
+
+
+@layer components {
+  @keyframes double-pulse-strong {
+    0% {
+      /* نبضتان تبدآن من المركز بكثافة عالية */
+      box-shadow: 0 0 0 0 rgba(132, 216, 22, 0.8), 0 0 0 0 rgba(123, 255, 0, 0.541);
+    }
+    50% {
+      /* النبضة الأولى تصل لأقصى مدى لها بينما الثانية تتبعها */
+      box-shadow: 0 0 0 6px rgba(255, 155, 5, 0), 0 0 0 8px rgba(191, 255, 0, 0.301);
+    }
+    100% {
+      /* النبضة الثانية تنتهي وتختفي تماماً */
+      box-shadow: 0 0 0 8px rgba(193, 255, 0, 0), 0 0 0 10px rgba(193, 255, 0, 0);
+    }
+  }
+
+  .animate-pulse-double {
+    /* زمن 1.8 ثانية: سرعة مثالية لإظهار القوة والنشاط */
+    animation: double-pulse-strong 0.8s cubic-bezier(0.25, 0, 0.3, 1);
+  }
+}
+
+
+
+
+/* كلاس لتطبيق الأنيميشن */
