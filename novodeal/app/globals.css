@@ -11,6 +11,7 @@
   /* --- (colors) --- */
    --color-main: var(--bg-base);
    --color-surface: var(--bg-surface);
+   --color-novo-white: var(--bg-novo-white);
    
    --color-accent: var(--primary-accent);
    --color-accent-hover: var(--primary-hover);
@@ -36,6 +37,7 @@
   --foreground: #171717;
   --bg-base: #F4F8FC;
   --bg-surface: #e9ebee;
+  --bg-novo-white: #fff;
   
   --primary-accent: #C1FF00;
   --primary-hover: #A8E600;
@@ -45,6 +47,7 @@
   --text-base-green: #05AF25;
   --text-novo-black: #0c0c0c;
   /* في الفاتح النص الرئيسي داكن */
+  
   --text-muted: #4B5563;
   --text-novo-gray: #666D85;
   --text-novo-bg-gray: #F7F8FA;
@@ -102,6 +105,13 @@
 
   header, footer {
     width: 100%;
+  }
+
+  .novo-underline {
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #e4e4e4;
+    
   }
 }
 

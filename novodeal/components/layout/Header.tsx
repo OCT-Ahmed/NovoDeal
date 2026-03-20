@@ -61,14 +61,16 @@ const Header = () => {
                             {language}
                         </div> 
                         <span className="hidden md:block font-[100] text-lg mx-2 hover:opacity-50 transition-colors duration-300">|</span>
-                        <Heart size={20} className="hover:opacity-50 cursor-pointer transition-all duration-300" />
+                        <Link href="/favourites">
+                        <Heart size={20} className="hover:opacity-50 transition-all duration-300" />
+                        </Link>
                         <span className="hidden md:block font-[100] text-lg mx-2">|</span>
-                        <div className="relative hover:opacity-50 cursor-pointer transition-all duration-300">
+                        <Link href="/cart" className="relative hover:opacity-50 transition-all duration-300">
                             <ShoppingCart size={20} className="" />
                             <div className="absolute -top-2 -right-2 flex items-center justify-center font-semibold bg-accent-hover text-white w-3 h-3 rounded-full p-2">
                                 <span className="text-xs">13</span>
                             </div>
-                        </div>
+                        </Link>
                         
                         
                     </div>
