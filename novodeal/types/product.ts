@@ -4,6 +4,7 @@ export interface ProductResponse {
 
 export type Products = Product[];
 
+
 export interface Product {
   id:                  number;
   title:               string;
@@ -27,6 +28,32 @@ export interface Product {
   meta:                Meta;
   images:              string[];
   thumbnail:           string;
+}
+
+export interface CartItem {
+  id:                  number;
+  title:               string;
+  description:         string;
+  category:            string;
+  price:               number;
+  discountPercentage:  number;
+  rating:              number;
+  stock:               number;
+  tags:                string[];
+  brand:               string;
+  sku:                 string;
+  weight:              number;
+  dimensions:          Dimensions;
+  warrantyInformation: string;
+  shippingInformation: string;
+  availabilityStatus:  string;
+  reviews:             Review[];
+  returnPolicy:        string;
+  minimumOrderQuantity: number;
+  meta:                Meta;
+  images:              string[];
+  thumbnail:           string;
+  quantity: number;
 }
 
 export interface Dimensions {

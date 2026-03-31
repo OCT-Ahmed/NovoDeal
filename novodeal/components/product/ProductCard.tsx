@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Heart, Star } from "lucide-react";
+import useCartStore from "@/store/cartStore";
 
 
 const ProductCard = ({product}:any) => {
@@ -9,6 +10,7 @@ const ProductCard = ({product}:any) => {
     const handleAddFav = () => {
         setIsFav(!isFav)
     }
+    const { addToCart } = useCartStore();
     return (
         <article className="group relative flex flex-col items-start justify-start gap-2 w-52 min-h-[540px] rounded-lg overflow-hidden border border-novo-gray/50">
             {/* Image & FavIcon */}
@@ -24,8 +26,8 @@ const ProductCard = ({product}:any) => {
                 <Heart 
                 className={`absolute z-50 top-2 right-2 bg-white/20 p-1 backdrop-blur-sm rounded-full cursor-pointer`}
                     size={30} 
-                    color={isFav && "green"}
-                    fill={isFav ? "green" : "lightgray" }
+                    color={isFav ? "green" : "lightgray"}
+                    fill={isFav ? "green" : "none" }
                     // opacity={isFav ? 1 : 0.1}
                     onClick={handleAddFav}
                 />
@@ -60,7 +62,7 @@ const ProductCard = ({product}:any) => {
                 {/* free delivery & any features */}
                 <button 
                     className="bg-accent py-2 w-full mt-2 rounded-full hover:bg-accent-hover cursor-pointer transition-colors duration-300"
-                    
+                    onClick={() => addToCart(product)}
                     >
                     Add To Cart
                 </button>
